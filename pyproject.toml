@@ -1,0 +1,13 @@
+[project]
+name = "misperer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.6.0",
+    "pydantic-settings>=2.8.1",
+    "pymisp>=2.5.10",
+    "pytest>=8.3.5",
+]
