@@ -297,6 +297,7 @@ async def call_tool(name: str, arguments: dict) -> list[types.TextContent]:
         return [types.TextContent(type="text", text=str(result))]
 
     if name == "create_event":
+        from datetime import datetime
         event = MISPEvent()
         event.info = arguments["info"]
         event.distribution = arguments.get("distribution", 0)
@@ -327,15 +328,6 @@ async def call_tool(name: str, arguments: dict) -> list[types.TextContent]:
         event = misp.get_event(arguments["event_id"])['Event']
         me = MISPEvent()
         me.load(event)
-        misp_object = MISPObject('domain-ip')
-        misp_object.comment = 'Auto-generated domain-ip object'
-        misp_object.add_attribute('domain', value=arguments['domain'])
-        misp_object.add_attribute('ip', value=arguments['ip'])
-        if 'first_seen' in arguments:
-            misp_object.add_attribute('first-seen', value=arguments['first_seen'])
-        if 'last_seen' in arguments:
-            misp_object.add_attribute('last-seen', value=arguments['last_seen'])
-        me.add_object(misp_object)
         return [types.TextContent(type="text", text=me.to_json())]
 
     if name == "publish_event":
