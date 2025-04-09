@@ -1,4 +1,5 @@
-# `MISP-mcp` Use cases
+# MISP-mcp
+
 
 ## What is MCP?
 
