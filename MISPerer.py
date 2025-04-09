@@ -261,7 +261,7 @@ async def call_tool(name: str, arguments: dict) -> list[types.TextContent]:
         return [types.TextContent(type="text", text=str(event))]
 
     if name == "list_organisations":
-        orgs = misp.get_organisations_list()
+        orgs = misp.misp.organisations()
         return [types.TextContent(type="text", text=str(orgs))]
 
     if name == "search_by_galaxy":
